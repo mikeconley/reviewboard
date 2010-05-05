@@ -116,7 +116,6 @@ INSTALLED_APPS = (
 )
 
 WEB_API_ENCODERS = (
-    'reviewboard.webapi.json.ReviewBoardAPIEncoder',
     'djblets.webapi.core.BasicAPIEncoder',
 )
 
