@@ -15,7 +15,7 @@ class NavigationBarHook(ExtensionHook):
     """
     __metaclass__ = ExtensionHookPoint
 
-    def get_entry(self):
+    def get_entry(self, context):
         """
         Returns the entry to add to the navigation bar.
 
