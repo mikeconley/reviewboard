@@ -11,7 +11,6 @@ from django.core.exceptions import PermissionDenied
 from django.db.models import Q
 from django.http import Http404, HttpResponseForbidden
 from django.shortcuts import get_object_or_404
-from django.template.defaultfilters import timesince
 from django.utils.translation import ugettext as _
 from django.views.decorators.http import require_POST
 
@@ -28,7 +27,6 @@ from djblets.webapi.errors import WebAPIError, \
                                   INVALID_ATTRIBUTE, INVALID_FORM_DATA, \
                                   NOT_LOGGED_IN, SERVICE_NOT_CONFIGURED
 
-from reviewboard import get_version_string, get_package_version, is_release
 from reviewboard.accounts.models import Profile
 from reviewboard.diffviewer.forms import EmptyDiffError
 from reviewboard.diffviewer.models import FileDiff, DiffSet
