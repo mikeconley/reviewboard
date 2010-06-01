@@ -9,6 +9,7 @@ from django.db.models import Q
 from django.http import HttpResponseNotAllowed, HttpResponseRedirect
 from django.template.defaultfilters import timesince
 from django.utils.translation import ugettext as _
+from djblets.extensions.base import RegisteredExtension
 from djblets.siteconfig.models import SiteConfiguration
 from djblets.webapi.core import WebAPIResponseFormError, \
                                 WebAPIResponsePaginated
@@ -19,10 +20,12 @@ from djblets.webapi.errors import DOES_NOT_EXIST, INVALID_ATTRIBUTE, \
                                   INVALID_FORM_DATA, PERMISSION_DENIED
 from djblets.webapi.resources import WebAPIResource as DjbletsWebAPIResource, \
                                      UserResource as DjbletsUserResource, \
+                                     ExtensionResource as DjbletsExtensionResource, \
                                      RootResource, register_resource_for_model
 
 from reviewboard import get_version_string, get_package_version, is_release
 from reviewboard.accounts.models import Profile
+from reviewboard.extensions.base import get_extension_manager
 from reviewboard.reviews.forms import UploadDiffForm, UploadScreenshotForm
 from reviewboard.reviews.models import Comment, DiffSet, FileDiff, Group, \
                                        Repository, ReviewRequest, \
@@ -2181,7 +2184,11 @@ class ServerInfoResource(WebAPIResource):
 server_info_resource = ServerInfoResource()
 
 
+extension_resource = DjbletsExtensionResource(get_extension_manager())
+
+
 root_resource = RootResource([
+    extension_resource,
     repository_resource,
     review_group_resource,
     review_request_resource,
@@ -2220,6 +2227,7 @@ register_resource_for_model(Comment, review_comment_resource)
 register_resource_for_model(DiffSet, diffset_resource)
 register_resource_for_model(FileDiff, filediff_resource)
 register_resource_for_model(Group, review_group_resource)
+register_resource_for_model(RegisteredExtension, extension_resource)
 register_resource_for_model(Repository, repository_resource)
 register_resource_for_model(
     Review,
