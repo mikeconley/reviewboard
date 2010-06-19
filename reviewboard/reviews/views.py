@@ -221,6 +221,8 @@ def review_detail(request, review_request_id,
 
     entries.sort(key=lambda item: item['timestamp'])
 
+    print ReviewRequestDetailHook.hooks
+    
     response = render_to_response(template_name, RequestContext(request, {
         'draft': draft,
         'detail_hooks': ReviewRequestDetailHook.hooks,

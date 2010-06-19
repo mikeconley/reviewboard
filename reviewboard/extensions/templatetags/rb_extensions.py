@@ -66,7 +66,6 @@ def navigation_bar_hooks(context):
             new_context = {
                 'entry': nav_info,
             }
-            new_context.update(context)
 
             s += render_to_string("extensions/navbar_entry.html", new_context)
 
