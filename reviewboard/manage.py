@@ -154,7 +154,7 @@ def include_enabled_extensions(settings):
 if __name__ == "__main__":
 
     fix_django_evolution_issues(settings)
-    
+
     if len(sys.argv) > 1 and \
        (sys.argv[1] == 'runserver' or sys.argv[1] == 'test'):
         if settings.DEBUG:
