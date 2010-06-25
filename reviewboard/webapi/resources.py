@@ -20,14 +20,9 @@ from djblets.webapi.errors import DOES_NOT_EXIST, INVALID_ATTRIBUTE, \
                                   INVALID_FORM_DATA, PERMISSION_DENIED
 from djblets.webapi.resources import WebAPIResource as DjbletsWebAPIResource, \
                                      UserResource as DjbletsUserResource, \
-<<<<<<< HEAD:reviewboard/webapi/resources.py
                                      ExtensionResource as DjbletsExtensionResource, \
-                                     RootResource, register_resource_for_model
-=======
-                                     RootResource, \
-                                     register_resource_for_model, \
-                                     get_resource_for_object
->>>>>>> 1ae0bf9e05e893028b05fb293b538ae1785f6332:reviewboard/webapi/resources.py
+                                     get_resource_for_object, RootResource, \
+                                     register_resource_for_model
 
 from reviewboard import get_version_string, get_package_version, is_release
 from reviewboard.accounts.models import Profile
