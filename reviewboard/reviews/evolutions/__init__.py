@@ -8,4 +8,6 @@ SEQUENCE = [
     'group_incoming_request_count',
     'group_invite_only',
     'group_visible',
+    'add_issues_to_diff_comments',
+    'add_issues_to_screenshot_comments',
 ]
