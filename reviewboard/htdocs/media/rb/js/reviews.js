@@ -594,6 +594,10 @@ $.fn.issueUI = function() {
 
     self.appear_as_state(self.get_issue_status());
 
+    if(window['gEditable']) {
+        self.issueButtons();
+    }
+
     return this;
 }
 
@@ -976,10 +980,6 @@ $.fn.commentDlg = function() {
                     var issue = $('<div/>')
                         .inlineIssue(comments, i)
                         .issueUI();
-
-                    if (window["gEditable"]) {
-                        issue.issueButtons();
-                    }
 
                     issue.appendTo(item);
                 }
