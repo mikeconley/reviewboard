@@ -185,7 +185,7 @@ class BaseWebAPITestCase(TestCase, EmailTestHelper):
 
     def _postNewDiffComment(self, review_request, review_id, comment_text,
                             filediff_id=None, interfilediff_id=None,
-                            first_line=10, num_lines=5):
+                            first_line=10, num_lines=5, issue_opened=False):
         """Creates a diff comment and returns the payload response."""
         if filediff_id is None:
             diffset = review_request.diffset_history.diffsets.latest()
@@ -197,6 +197,7 @@ class BaseWebAPITestCase(TestCase, EmailTestHelper):
             'text': comment_text,
             'first_line': first_line,
             'num_lines': num_lines,
+            'issue_opened': issue_opened,
         }
 
         if interfilediff_id is not None:
@@ -217,7 +218,7 @@ class BaseWebAPITestCase(TestCase, EmailTestHelper):
         return rsp
 
     def _postNewScreenshotComment(self, review_request, review_id, screenshot,
-                                  comment_text, x, y, w, h):
+                                  comment_text, x, y, w, h, issue_opened):
         """Creates a screenshot comment and returns the payload response."""
         if review_request.local_site:
             local_site_name = review_request.local_site.name
@@ -231,6 +232,7 @@ class BaseWebAPITestCase(TestCase, EmailTestHelper):
             'y': y,
             'w': w,
             'h': h,
+            'issue_opened': issue_opened,
         }
 
         review = Review.objects.get(pk=review_id)
